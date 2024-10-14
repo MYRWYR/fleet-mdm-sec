@@ -39,6 +39,7 @@ export interface IButtonProps {
   onClick?:
     | ((value?: any) => void)
     | ((evt: React.MouseEvent<HTMLButtonElement>) => void);
+  onKeyDown?: React.KeyboardEventHandler<HTMLButtonElement>;
   isLoading?: boolean;
 }
 
@@ -101,6 +102,7 @@ class Button extends React.Component<IButtonProps, IButtonState> {
       title,
       variant,
       isLoading,
+      onKeyDown,
     } = this.props;
     const fullClassName = classnames(
       baseClass,
@@ -122,6 +124,7 @@ class Button extends React.Component<IButtonProps, IButtonState> {
         className={fullClassName}
         disabled={disabled}
         onClick={handleClick}
+        onKeyDown={onKeyDown}
         tabIndex={tabIndex}
         type={type}
         title={title}
